@@ -3,10 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Task-Manager</title>
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    
+    <header class="title">
+        <h1> Task Manager</h1>
+    </header>
+    <main>
+        <section class="container">
+            <div class="task-container">
+                <div class="task-header">
+                    <h2>Tasks</h2>
+                </div>
+                <div class="task-form">
+                    <label for="task-input">Add a new task:</label>
+                    <form id="add-task-form">
+                        <input type="text" id="task-input" autocomplete="off" required placeholder="Enter a new task...">
+                        <button id="add-task-btn"  type="submit">Add Task</button>
+                    </form>
+                </div>
+                <div class="task-counter">
+                    <p>Tasks: <span id="task-count">0</span></p>
+                </div>  
+                <ul id="task-list">
+                </ul>
+            </div>
+        </section>  
+    </main>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
