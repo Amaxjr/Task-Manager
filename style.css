@@ -144,6 +144,9 @@ ul li{
     cursor: pointer;
     transition: background-color 0.2s ease, border-color 0.2s ease;
 }
+.task-counter p {
+    color: #f0e6dd;
+}
 
 ul li:hover{
     border-color: #D85A30;
