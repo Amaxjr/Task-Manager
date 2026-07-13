@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1a1a1a;
+    background-image: radial-gradient(circle at top, #2a2321 0%, #1a1a1a 60%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+header.title h1{
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #f0e6dd;
+    font-weight: 700;
+    padding-top: 40px;
+    margin: 0;
+}
+
+section.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    max-width: 500px;
+    width: 100%;
+
+    margin: 40px auto 60px;
+    padding: 30px;
+
+    border: 1px solid #3a2f2a;
+    border-radius: 16px;
+    background-color: #241f1c;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+div.task-header h2{
+    text-align: center;
+    margin-bottom: 24px;
+    color: #f0e6dd;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+#add-task-form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 10px;
+    width: 100%;
+}
+
+#add-task-form input{
+    flex: 1;
+}
+
+div.task-form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+div.task-form label{
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #cbbfb5;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+div.task-form input,
+#add-task-form input{
+    padding: 12px 14px;
+    border: 1px solid #3a2f2a;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #2e2724;
+    color: #f0e6dd;
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+}
+
+div.task-form input:focus,
+#add-task-form input:focus{
+    outline: none;
+    border-color: #D85A30;
+}
+
+div.task-form input::placeholder,
+#add-task-form input::placeholder{
+    color: #7a6f68;
+}
+
+button#add-task-btn,
+div.task-form button{
+    padding: 12px 22px;
+    background-color: #D85A30;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    flex-shrink: 0;
+}
+
+button#add-task-btn:hover,
+div.task-form button:hover{
+    background-color: #B5471F;
+}
+
+button#add-task-btn:active,
+div.task-form button:active{
+    transform: scale(0.97);
+}
+
+ul{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+ul li{
+    position: relative;
+    list-style-type: none;
+    padding: 14px 14px 14px 48px;
+    margin-bottom: 10px;
+    background-color: #2e2724;
+    border: 1px solid #3a2f2a;
+    border-radius: 10px;
+    color: #f0e6dd;
+    font-size: 14px;
+    user-select: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+ul li:hover{
+    border-color: #D85A30;
+}
+
+ul li:before{
+    content: "";
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background-image: url("assets/images/unchecked.png");
+    background-size: cover;
+    background-position: center;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+}
+
+ul li.checked{
+    color: #7a6f68;
+    text-decoration: line-through;
+    background-color: #262120;
+}
+
+ul li.checked:before{
+    background-image: url("assets/images/checked.png");
+}

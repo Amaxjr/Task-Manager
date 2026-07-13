@@ -1,36 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task-Manager</title>
-    <link href="style.css" rel="stylesheet">
-</head>
-<body>
-    <header class="title">
-        <h1> Task Manager</h1>
-    </header>
-    <main>
-        <section class="container">
-            <div class="task-container">
-                <div class="task-header">
-                    <h2>Tasks</h2>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Task-Manager</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link href="assets/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header class="title">
+            <h1> Task Manager</h1>
+        </header>
+        <main>
+            <section class="container">
+                <div class="task-container">
+                    <div class="task-header">
+                        <h2>Tasks</h2>
+                    </div>
+                    <div class="task-form">
+                        <label for="task-input">Add a new task:</label>
+                        <form id="add-task-form">
+                            <input type="text" id="task-input" autocomplete="off" required placeholder="Enter a new task...">
+                            <button type="button" id="add-task-btn" onclick="addTask()">Add Task</button>
+                        </form>
+                    </div>
+              
+                    <ul id="task-list">
+                        <!--li class = "checked">Task 1</li>
+                        <li>Task 2</li>
+                        <li>Task 3'</li-->
+                    </ul>
                 </div>
-                <div class="task-form">
-                    <label for="task-input">Add a new task:</label>
-                    <form id="add-task-form">
-                        <input type="text" id="task-input" autocomplete="off" required placeholder="Enter a new task...">
-                        <button id="add-task-btn"  type="submit">Add Task</button>
-                    </form>
-                </div>
-                <div class="task-counter">
-                    <p>Tasks: <span id="task-count">0</span></p>
-                </div>  
-                <ul id="task-list">
-                </ul>
-            </div>
-        </section>  
-    </main>
-    <script src="assets/js/script.js"></script>
-</body>
-</html>
+                      <div class="task-counter">
+                        <p>Tasks: <span id="task-count">0</span></p>
+                    </div>  
+            </section>  
+        </main>
+        <script src="assets/js/script.js"></script>
+    </body>
+    </html>
