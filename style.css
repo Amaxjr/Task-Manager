@@ -242,10 +242,13 @@ li {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #3a2f2a;
 }
 
 .task-counter p {
-    margin: 4px 0;
+    margin: 4px ;
     font-size: 14px;
     color: #f0e6dd;
 }
