@@ -1,12 +1,18 @@
 const inputBox = document.getElementById("task-input");
 const listContainer = document.getElementById("task-list");
 const counterTask = document.getElementById("task-count");
+const completedCounter = document.getElementById("completed-count");
+const incompleteCounter = document.getElementById("incomplete-count");
 const form = document.getElementById("add-task-form");
+const clearTasksBtn = document.getElementById("clear-tasks-btn");
+const filterTasksBtn = document.getElementById("filter-tasks-btn");
 
 form.addEventListener("submit", function(e) {
   e.preventDefault();
   addTask();
 });
+
+clearTasksBtn.addEventListener("click", clearTasks);
 
 function addTask() {
   if (inputBox.value === '') {
@@ -24,7 +30,7 @@ function addTask() {
     listContainer.appendChild(li);
     inputBox.value = "";
     inputBox.focus();
-    updateTaskCounter();
+    updateCounters();
     saveTasks();
   }
 }
@@ -32,18 +38,34 @@ function addTask() {
 listContainer.addEventListener("click", function(e) {
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("checked");
+        updateCounters();
         saveTasks();
     }
     else if (e.target.classList.contains("delete-btn")) {
         e.target.parentElement.remove();
-        updateTaskCounter();
+        updateCounters();
         saveTasks();
     }
 });
 
-function updateTaskCounter() {
-  const taskCount = listContainer.getElementsByTagName("li").length;
-  counterTask.textContent = taskCount;
+listContainer.addEventListener("dblclick", function(e) {
+    if (e.target.tagName === "LI") {
+        const newTaskText = prompt("Edit task:", e.target.firstChild.nodeValue.trim());
+        if (newTaskText !== null) {
+            e.target.firstChild.nodeValue = newTaskText.trim();
+            saveTasks();
+        }
+    }
+});
+
+function updateCounters() {
+  const allTasks = listContainer.getElementsByTagName("li").length;
+  const completed = listContainer.getElementsByClassName("checked").length;
+  const incomplete = allTasks - completed;
+
+  counterTask.textContent = allTasks;
+  completedCounter.textContent = completed;
+  incompleteCounter.textContent = incomplete;
 }
 
 function saveTasks() {
@@ -76,6 +98,13 @@ function loadTasks() {
   });
 }
 
+function clearTasks() {
+  if (confirm("Are you sure you want to clear all tasks?")) {
+    listContainer.innerHTML = "";
+    updateCounters();
+    saveTasks();
+  }
+}
 
 loadTasks();
-updateTaskCounter();
+updateCounters();

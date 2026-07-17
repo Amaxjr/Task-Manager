@@ -237,3 +237,15 @@ li {
         font-size: 24px;
     }
 }
+.task-counter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.task-counter p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #f0e6dd;
+}

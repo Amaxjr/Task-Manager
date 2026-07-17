@@ -20,10 +20,11 @@
                         <h2>Tasks</h2>
                     </div>
                     <div class="task-form">
-                        <label for="task-input">Add a new task:</label>
+                        <label for="task-input">Add a new task: </label>
                         <form id="add-task-form">
                             <input type="text" id="task-input" autocomplete="off" required placeholder="Enter a new task...">
                             <button type="button" id="add-task-btn" onclick="addTask()">Add Task</button>
+                            <button type="button" id="clear-tasks-btn" onclick="clearTasks()">Clear All</button>
                         </form>
                     </div>
               
@@ -35,6 +36,8 @@
                 </div>
                       <div class="task-counter">
                         <p>Tasks: <span id="task-count">0</span></p>
+                        <p>Completed: <span id="completed-count">0</span></p>
+                        <p>Incomplete: <span id="incomplete-count">0</span></p>
                     </div>  
             </section>  
         </main>
