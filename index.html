@@ -20,6 +20,11 @@
                         <label for="task-input">Add a new task: </label>
                         <form id="add-task-form">
                             <input type="text" id="task-input" autocomplete="off" required placeholder="Enter a new task...">
+                            <select id="priority-select">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>    
                             <button type="button" id="add-task-btn" onclick="addTask()">Add Task</button>
                             <button type="button" id="clear-tasks-btn" onclick="clearTasks()">Clear All</button>
                         </form>
