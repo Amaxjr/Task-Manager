@@ -5,7 +5,10 @@ const completedCounter = document.getElementById("completed-count");
 const incompleteCounter = document.getElementById("incomplete-count");
 const form = document.getElementById("add-task-form");
 const clearTasksBtn = document.getElementById("clear-tasks-btn");
-const filterTasksBtn = document.getElementById("filter-tasks-btn");
+const filterallBtn = document.getElementById("Filter-all");
+const filtercompletedBtn = document.getElementById("Filter-completed"); 
+const filterincompleteBtn = document.getElementById("Filter-incomplete"); 
+const filterclearBtn = document.getElementById("Filter-clear");
 
 form.addEventListener("submit", function(e) {
   e.preventDefault();
@@ -106,5 +109,45 @@ function clearTasks() {
   }
 }
 
+function filterTasks(filter) {
+  const tasks = listContainer.getElementsByTagName("li");
+  for (let i = 0; i < tasks.length; i++) {
+    const task = tasks[i];
+    if (filter === 'all') {
+      task.style.display = "";
+    }
+    else if (filter === 'completed') {
+      task.style.display = task.classList.contains("checked") ? "" : "none";
+    }
+    else if (filter === 'incomplete') {
+      task.style.display = task.classList.contains("checked") ? "none" : "";
+    }
+  }
+
+  setActiveFilterBtn(filter);
+}
+
+function clearFilter() {
+  const tasks = listContainer.getElementsByTagName("li");
+  for (let i = 0; i < tasks.length; i++) {
+    tasks[i].style.display = "";
+  }
+
+  clearActiveFilterBtn(); // troca a chamada
+}
+
+function setActiveFilterBtn(filter) {
+  clearActiveFilterBtn();
+
+  if (filter === 'all') filterallBtn.classList.add('active');
+  else if (filter === 'completed') filtercompletedBtn.classList.add('active');
+  else if (filter === 'incomplete') filterincompleteBtn.classList.add('active');
+}
+
+function clearActiveFilterBtn() {
+  [filterallBtn, filtercompletedBtn, filterincompleteBtn, filterclearBtn].forEach(btn => {
+    btn.classList.remove('active');
+  });
+}
 loadTasks();
 updateCounters();

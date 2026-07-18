@@ -23,8 +23,14 @@
                             <button type="button" id="add-task-btn" onclick="addTask()">Add Task</button>
                             <button type="button" id="clear-tasks-btn" onclick="clearTasks()">Clear All</button>
                         </form>
+   
                     </div>
-              
+                    <div class="task-filter">
+                    <button id="Filter-all" onclick="filterTasks('all')">All Tasks</button>
+                    <button id="Filter-completed" onclick="filterTasks('completed')">Completed</button>
+                    <button id="Filter-incomplete" onclick="filterTasks('incomplete')">Incomplete</button>
+                    <button id="Filter-clear" onclick="clearFilter()">Clear Filter</button>
+                    </div>  
                     <ul id="task-list">
                         <!--li class = "checked">Task 1</li>
                         <li>Task 2</li>
@@ -35,7 +41,8 @@
                         <p>Tasks: <span id="task-count">0</span></p>
                         <p>Completed: <span id="completed-count">0</span></p>
                         <p>Incomplete: <span id="incomplete-count">0</span></p>
-                    </div>  
+                    </div>
+
             </section>  
         </main>
         <script src="script.js"></script>

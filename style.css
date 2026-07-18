@@ -252,3 +252,35 @@ li {
     font-size: 14px;
     color: #f0e6dd;
 }
+.task-filter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    width: 100%;
+    margin-top: -8px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #3a2f2a;
+}
+
+.task-filter button.active {
+    background-color: #f0e6dd;
+    color: #241f1c;
+}
+.task-filter button {
+    padding: 8px 12px;
+    background-color: #D85A30;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.task-filter button:hover {
+    background-color: #d6b4a8;
+}
