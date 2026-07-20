@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
+*,
+*::before,
+*::after{
+    box-sizing: border-box; /* padding e border passam a contar DENTRO do width, não somados por cima */
+}
+
 body{
     font-family: 'Montserrat', sans-serif;
     background-color: #1a1a1a;
@@ -348,6 +354,42 @@ ul li.checked:before{
     }
 }
 
+/* ===== FORMULÁRIO EM COLUNA MAIS CEDO (até 600px) =====
+   O container já começa a encolher a partir de 768px, mas antes o formulário só virava
+   coluna a 480px. Isso deixava uma faixa intermediária (~480-768px) onde input + selects +
+   botões tentavam caber numa linha só sem espaço suficiente, quebrando de forma solta e
+   imprevisível (o "sambando"). Adiantar esse breakpoint remove essa faixa incerta. */
+@media (max-width: 600px) {
+    #add-task-form{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    #add-task-form input,
+    #add-task-form select,
+    button#add-task-btn,
+    #clear-tasks-btn{
+        width: 100%;
+    }
+
+    div.task-form label{
+        text-align: center;
+    }
+
+    #add-task-form select{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none; /* remove a aparência nativa do navegador, que ignora text-align em alguns casos */
+        text-align: center;
+        text-align-last: center;
+        padding-right: 32px; /* espaço reservado pra seta customizada não sobrepor o texto */
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f0e6dd' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+    }
+}
+
 /* ===== CELULARES (até 480px) ===== */
 @media (max-width: 480px) {
     header.title h1{
@@ -367,19 +409,6 @@ ul li.checked:before{
     div.task-header h2{
         font-size: 16px;
         margin-bottom: 18px;
-    }
-
-    #add-task-form{
-        flex-direction: column;
-        align-items: stretch;
-        gap: 8px;
-    }
-
-    #add-task-form input,
-    #add-task-form select,
-    button#add-task-btn,
-    #clear-tasks-btn{
-        width: 100%;
     }
 
     div.task-form input,
