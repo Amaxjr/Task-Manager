@@ -317,6 +317,17 @@ ul li.checked:before{
     border-color: #D85A30;
     color: #fff;
 }
+#sort-select {
+    padding: 10px 12px;
+    border: 1px solid #3a2f2a;
+    border-radius: 8px;
+    background-color: #2e2724;
+    color: #f0e6dd;
+    font-family: inherit;
+    font-size: 13px;
+    transition: border-color 0.2s ease;
+    outline: none;
+}
 
 @media (max-width: 480px) {
     header.title h1{
@@ -353,5 +364,123 @@ ul li.checked:before{
     }
     .delete-btn{
         font-size: 24px;
+    }
+}
+/* ===== TABLET E TELAS MÉDIAS (até 768px) ===== */
+@media (max-width: 768px) {
+    section.container{
+        max-width: 90%;
+        margin: 30px auto 40px;
+    }
+
+    .task-counter{
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+    }
+}
+
+/* ===== CELULARES (até 480px) ===== */
+@media (max-width: 480px) {
+    header.title h1{
+        font-size: 22px;
+        padding-top: 24px;
+        letter-spacing: 1px;
+    }
+
+    section.container{
+        max-width: 100%;
+        width: calc(100% - 24px);
+        margin: 16px auto 32px;
+        padding: 20px 16px;
+        border-radius: 12px;
+    }
+
+    div.task-header h2{
+        font-size: 16px;
+        margin-bottom: 18px;
+    }
+
+    #add-task-form{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    #add-task-form input,
+    #priority-select,
+    button#add-task-btn,
+    #clear-tasks-btn{
+        width: 100%;
+    }
+
+    div.task-form input,
+    #add-task-form input{
+        font-size: 16px; /* evita zoom automático do iOS */
+    }
+
+    .task-filter{
+        gap: 6px;
+    }
+
+    .task-filter button{
+        flex: 1 1 calc(50% - 6px); /* 2 botões por linha em vez de 4 espremidos */
+        text-align: center;
+    }
+
+    ul li{
+        padding: 12px 12px 12px 42px;
+        font-size: 13px;
+        gap: 6px;
+    }
+
+    ul li:before{
+        height: 20px;
+        width: 20px;
+        left: 12px;
+    }
+
+    .priority-badge{
+        font-size: 10px;
+        padding: 2px 8px;
+    }
+
+    .delete-btn{
+        font-size: 24px;
+    }
+
+    .task-counter{
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .task-counter p{
+        margin: 2px 0;
+    }
+}
+
+/* ===== CELULARES PEQUENOS (até 360px) ===== */
+@media (max-width: 360px) {
+    header.title h1{
+        font-size: 18px;
+    }
+
+    section.container{
+        padding: 16px 12px;
+    }
+
+    .task-filter button{
+        flex: 1 1 100%; /* empilha os filtros um por linha */
+        font-size: 11px;
+    }
+
+    ul li{
+        font-size: 12px;
+        padding: 10px 10px 10px 38px;
+    }
+
+    .priority-badge{
+        display: none; /* espaço muito curto: prioriza texto da tarefa e o "x" de deletar */
     }
 }

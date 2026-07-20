@@ -10,6 +10,13 @@ const filtercompletedBtn = document.getElementById("Filter-completed");
 const filterincompleteBtn = document.getElementById("Filter-incomplete");
 const filterclearBtn = document.getElementById("Filter-clear");
 const prioritySelect = document.getElementById("priority-select");
+const sortSelect = document.getElementById("sort-select");
+
+filterallBtn.addEventListener("click", () => filterTasks('all'));
+filtercompletedBtn.addEventListener("click", () => filterTasks('completed'));
+filterincompleteBtn.addEventListener("click", () => filterTasks('incomplete'));
+filterclearBtn.addEventListener("click", clearFilter);
+sortSelect.addEventListener("change", sortTasks);
 
 form.addEventListener("submit", function(e) {
   e.preventDefault();
@@ -18,9 +25,10 @@ form.addEventListener("submit", function(e) {
 
 clearTasksBtn.addEventListener("click", clearTasks);
 
-function createTaskElement(text, checked, priority) {
+function createTaskElement(text, checked, priority, index) {
   let li = document.createElement("li");
   li.setAttribute("data-priority", priority);
+  li.dataset.index = index !== undefined ? index : Date.now();
   if (checked) li.classList.add("checked");
 
   let taskText = document.createElement("span");
@@ -96,22 +104,23 @@ function updateCounters() {
 }
 
 function saveTasks() {
-  const tasks = [];
+  const tasksToSave = [];
   const taskElements = listContainer.getElementsByTagName("li");
   for (let i = 0; i < taskElements.length; i++) {
     const taskText = taskElements[i].querySelector(".task-text").textContent.trim();
     const isChecked = taskElements[i].classList.contains("checked");
     const priority = taskElements[i].getAttribute("data-priority") || "low";
-    tasks.push({ text: taskText, checked: isChecked, priority: priority });
+    const index = taskElements[i].dataset.index;
+    tasksToSave.push({ text: taskText, checked: isChecked, priority: priority, index: index });
   }
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem("tasks", JSON.stringify(tasksToSave));
 }
 
 function loadTasks() {
-  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
   listContainer.innerHTML = "";
-  tasks.forEach(task => {
-    const li = createTaskElement(task.text, task.checked, task.priority || "low");
+  savedTasks.forEach(task => {
+    const li = createTaskElement(task.text, task.checked, task.priority || "low", task.index);
     listContainer.appendChild(li);
   });
 }
@@ -169,6 +178,33 @@ function filterTasksByPriority(priority) {
     const taskPriority = task.getAttribute("data-priority");
     task.style.display = (priority === 'all' || priority === taskPriority) ? "" : "none";
   }
+}
+
+function sortTasks() {
+  const tasksArray = Array.from(listContainer.getElementsByTagName("li"));
+  const sortValue = sortSelect.value;
+
+  if (sortValue === "recent") {
+    tasksArray.sort((a, b) => b.dataset.index - a.dataset.index);
+  }
+
+  if (sortValue === "oldest") {
+    tasksArray.sort((a, b) => a.dataset.index - b.dataset.index);
+  }
+
+  if (sortValue === "priority") {
+    const priorityOrder = { "high": 1, "medium": 2, "low": 3 };
+    tasksArray.sort((a, b) => priorityOrder[a.getAttribute("data-priority")] - priorityOrder[b.getAttribute("data-priority")]);
+  }
+
+  if (sortValue === "alphabetical"){
+    const alphabetical = (a, b) => a.querySelector(".task-text").textContent.localeCompare(b.querySelector(".task-text").textContent);
+    tasksArray.sort(alphabetical);
+  }
+
+  listContainer.innerHTML = "";
+  tasksArray.forEach(task => listContainer.appendChild(task));
+  saveTasks();
 }
 
 loadTasks();
