@@ -171,6 +171,22 @@ button#add-task-btn:active{
     border-color: #D85A30;
 }
 
+#sort-select {
+    padding: 10px 12px;
+    border: 1px solid #3a2f2a;
+    border-radius: 8px;
+    background-color: #2e2724;
+    color: #f0e6dd;
+    font-family: inherit;
+    font-size: 13px;
+    transition: border-color 0.2s ease;
+    outline: none;
+}
+
+#sort-select:focus {
+    border-color: #D85A30;
+}
+
 ul{
     width: 100%;
     padding: 0;
@@ -317,55 +333,7 @@ ul li.checked:before{
     border-color: #D85A30;
     color: #fff;
 }
-#sort-select {
-    padding: 10px 12px;
-    border: 1px solid #3a2f2a;
-    border-radius: 8px;
-    background-color: #2e2724;
-    color: #f0e6dd;
-    font-family: inherit;
-    font-size: 13px;
-    transition: border-color 0.2s ease;
-    outline: none;
-}
 
-@media (max-width: 480px) {
-    header.title h1{
-        font-size: 22px;
-        padding-top: 24px;
-    }
-    section.container{
-        max-width: 100%;
-        margin: 20px auto 40px;
-        padding: 20px 16px;
-        border-radius: 12px;
-    }
-    #add-task-form{
-        flex-direction: column;
-        align-items: stretch;
-        gap: 8px;
-    }
-    button#add-task-btn,
-    #clear-tasks-btn{
-        width: 100%;
-    }
-    div.task-form input,
-    #add-task-form input{
-        font-size: 16px;
-    }
-    ul li{
-        padding: 12px 12px 12px 42px;
-        font-size: 13px;
-    }
-    ul li:before{
-        height: 20px;
-        width: 20px;
-        left: 12px;
-    }
-    .delete-btn{
-        font-size: 24px;
-    }
-}
 /* ===== TABLET E TELAS MÉDIAS (até 768px) ===== */
 @media (max-width: 768px) {
     section.container{
@@ -408,7 +376,7 @@ ul li.checked:before{
     }
 
     #add-task-form input,
-    #priority-select,
+    #add-task-form select,
     button#add-task-btn,
     #clear-tasks-btn{
         width: 100%;
