@@ -192,7 +192,13 @@ button#add-task-btn:active{
 #sort-select:focus {
     border-color: #D85A30;
 }
+#task-list{
+    display: flex;
+    flex-direction: column;
+    max-height: 400px;
+    overflow-y: auto;
 
+}
 ul{
     width: 100%;
     padding: 0;
